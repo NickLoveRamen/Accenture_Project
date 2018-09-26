@@ -9,31 +9,35 @@
         <meta name="description" content="Bonk Gang Log-in">
         <meta name="author" content="Bonk Gang">
         <link rel="stylesheet" href="./style.css">
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     </head>
 
     <!--Page Contents-->
-    <body>
+    <body background="./img/beach.jpg">
         <section>
             <div class="container">
                 <div id="loginBox">
                     <!--Back-end guys will use this form to get user input-->
                     <form id="loginForm">
                         <div class="formElementWrapper">
-                            <label>Username</label>
-                            <br>
-                            <input class="formField" type="text" name="username">
+                            <input id="f0" class="formField" type="text" name="username" placeholder="username"/>
                         </div>
                         <div class="formElementWrapper">
-                            <label>Password</label>
-                            <br>
-                            <input class="formField" type="password" name="password">
+                            <input id="f1" class="formField" type="password" name="password" placeholder="password"/>
                         </div>
-                        <input id="submitButton" type="submit" value="Submit">
-                        <br><br>
-                        <p id="output">output results here. i.e. 
-                            "login success!" or "login fail"</p>
+                        <input id="submitButton" type="submit" value="login"/>
                     </form>
-                    
+                    <!--sction below submit button-->
+                    <div id="help">
+                        <a href id="left">forgot your password?</a>
+                        <a href id="right">don't have an account?</a>
+                    </div>
+                    <br><br>
+                    <!--output window for checking if username and password is correct-->
+                    <div id="output">
+                        <p>output results here. i.e. 
+                            "login success!" or "login fail"</p>
+                    </div>
                 </div>
             </div>
         </section>

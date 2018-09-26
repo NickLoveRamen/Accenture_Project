@@ -1,13 +1,12 @@
-
-
 /*Global*/
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Oswald';
     font-size:15px;
     line-height:1.5;
     padding: 0;
     margin: 0;
-    background-color: #FFF0F5
+    /*background-color: #5cf9f9;*/
+    /*background: "./img/beach.jpg";*/
 }
   
 .container{
@@ -15,6 +14,9 @@ body{
     margin:auto;
     overflow:hidden;
 }
+
+
+/*Log in box styles*/
 
 #loginBox{
     /*center the box*/
@@ -27,14 +29,15 @@ body{
     width: 400px;
 
     /*box appearance*/
-    background-color: #d2d8df;
+    background-color: #ffffff;
     border-radius: 20px;
 }
 
 .formElementWrapper{
-    margin-bottom: 12px;
+    margin-bottom: 18px;
     text-align: left;
     width: 100%;
+    font-size: 22px;
 }
 
 #loginForm{
@@ -46,11 +49,72 @@ body{
 
 .formField{
     width: 100%;
+    padding: 5px 0;
+
+    font-size: 22px;
+    font-family: oswald;
+    color: black;
+
+    border-width: 1px;
+    border-color: black;
+    border-top: 0;
+    border-left: 0;
+    border-right:0;
+    
+    background-color:white;
 }
 
 #submitButton{
     width: 100%;
-    border-radius: 5px;
+    border-radius: 25px;
+    border-width: 0;
+    padding: 10px 0;
+    margin-top: 15px;
+
+    font-family: 'Oswald';
+    font-size: 22px;
+
+    background-color: #5bdae5;
 }
 
+/*Below form
+
+register link and forgot password link*/
+
+#help{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+
+}
+
+#help a{
+    text-decoration: unset;
+}
+
+#left{
+    float: left;
+}
+
+#right{
+    float: right;
+}
+
+#output{
+    width: 80%;
+    height: 25%;
+    margin: auto;
+    margin-bottom: 30px;
+
+    border-style: solid;
+    border-width: 5px;
+    border-color: #b9bdc2;
+    border-radius: 5px;
+
+    background-color: #ffffff;
+}
+
+#output p{
+    margin: 3px;
+}
 
