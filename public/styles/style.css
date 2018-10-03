@@ -15,10 +15,15 @@ body{
     overflow:hidden;
 }
 
+h2{
+    margin-top: 30px;
+}
+
 
 /*Log in box styles*/
 
 #loginBox{
+    text-align: center;
     /*center the box*/
     margin-left: auto;
     margin-right: auto;
@@ -32,6 +37,7 @@ body{
     background-color: #ffffff;
     border-radius: 20px;
 }
+
 
 .formElementWrapper{
     margin-bottom: 18px;
@@ -84,7 +90,7 @@ register link and forgot password link*/
 #help{
     width: 80%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 50px;
 
 }
 
