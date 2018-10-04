@@ -2,7 +2,6 @@
 const mysql = require('mysql');
 const express = require('express');
 const app = express();
-const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 
@@ -31,12 +30,13 @@ app.get("/", function (req,res){
 /*=======METHODS==============*/
 app.post('/', function(req,res){
     con.query("SELECT * FROM users WHERE username = ?", [req.body.username], function(err, results){
-      //handle for output to UI
-      //var output = document.getElementById("output");
+      //throw SQL error
+      if(err) throw (err);
+
+      //interpret query response
       console.log(req.body.username + " attempting login...");
       if(!results.length){
         //handle no such username
-        //output.innerHTML = "No such username found."
         console.log("No such username found.\n");
         res.render("noname.ejs");
         return
@@ -45,14 +45,12 @@ app.post('/', function(req,res){
         //check if password matches
         if(req.body.password == results[0].password){
           //log in successfull
-          //output.innerHTML = "log in successfull!";
           console.log("log in successfull!\n");
           res.render("success.ejs");
           return;
         }
         else{
           //wrong password
-          //output.innerHTML = "Incorrect Password.";
           console.log("Incorrect Password.\n");
           res.render("wrongpass.ejs");
           return;
@@ -61,6 +59,7 @@ app.post('/', function(req,res){
     });
 })
 
+//define port
 app.listen(8080, function (){
   console.log("listening on 8080.\n");
 })
