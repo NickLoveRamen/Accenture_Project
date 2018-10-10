@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 
 //database config
 var con = mysql.createConnection({
-  host: "127.0.0.1",
+  host: "localhost",
   user: "root",
-  password: "password",
-  database: "mydb"
+  password: "Coding4life!@19",
+  database: "testdb"
 });
 
 //misc config to get the html and css to play nice
@@ -18,7 +18,8 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.set("views", path.resolve(__dirname, "views"));
+//var duplicate = con.query("SELECT username, COUNT(*) FROM users GROUP BY username HAVING COUNT(*) >1");
 
 
 /*======GET ROUTING===========*/
@@ -26,13 +27,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", function (req,res){
   res.render("index.ejs");
 })
+app.get("/:create", function(req, res){
+  res.render(req.params.create);
+})
+
 
 /*=======METHODS==============*/
 app.post('/', function(req,res){
     con.query("SELECT * FROM users WHERE username = ?", [req.body.username], function(err, results){
       //throw SQL error
       if(err) throw (err);
-
       //interpret query response
       console.log(req.body.username + " attempting login...");
       if(!results.length){
@@ -57,6 +61,22 @@ app.post('/', function(req,res){
         }
       }
     });
+})
+app.post("/:create", function(req,res){
+  con.query("INSERT INTO users VALUES('" +req.body.username+"', '"+req.body.password+"')", function(err, results){
+    if(err) throw err;
+    try {
+      res.render("create.ejs");
+      if(req.body.password == results[0].password){
+        console.log("New user has been created!");
+        res.render("successCreate.ejs");
+        return;
+    }
+   
+    }catch(error){
+      console.log(error, "username already in database.");
+    }
+  });
 })
 
 //define port
